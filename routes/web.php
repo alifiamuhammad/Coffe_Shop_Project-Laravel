@@ -2,7 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
-
+use App\Http\Controllers\MenuController;
+use App\Http\Controllers\ContactController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,3 +19,5 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/login', [LoginController::class, 'index']);
+Route::get('/menu', [MenuController::class, 'index']);
+Route::get('/contact', [ContactController::class, 'index']);

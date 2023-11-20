@@ -10,8 +10,8 @@
     <link href="https://fonts.googleapis.com/css?family=Great+Vibes" rel="stylesheet">
 
     <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
-    
     <link rel="stylesheet" href="css/animate.css">
+    
     <link rel="stylesheet" href="css/owl.carousel.min.css">
     <link rel="stylesheet" href="css/owl.theme.default.min.css">
     <link rel="stylesheet" href="css/magnific-popup.css">
@@ -27,34 +27,123 @@
     <link rel="stylesheet" href="css/flaticon.css">
     <link rel="stylesheet" href="css/icomoon.css">
     <link rel="stylesheet" href="css/style.css">
+    
+    <div class="loading-container" id="loadingContainer">
+      <div class="loading-dots">
+          <div class="dot dot1"></div>
+          <div class="dot dot2"></div>
+          <div class="dot dot3"></div>
+          <div class="dot dot4"></div>
+      </div>
+  </div>
+<style>
+.loading-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: white; /* Set the background color to white */
+  z-index: 999; /* Make sure it's on top */
+}
+
+.content-container {
+  display: none; /* Initially hide the content container */
+  text-align: center;
+}
+
+.loading-dots {
+  display: flex;
+}
+
+.dot {
+  width: 15px;
+  height: 15px;
+  margin: 0 5px;
+  border-radius: 50%;
+  animation: bounce 2s ease-in-out forwards;
+}
+
+.dot1 { background-color: #3498db; }
+.dot2 { background-color: #e74c3c; }
+.dot3 { background-color: #2ecc71; }
+.dot4 { background-color: #f39c12; }
+
+.dot:not(:last-child) {
+  margin-right: 5px;
+}
+
+.dot:nth-child(2) {
+  animation-delay: 0.1s;
+}
+
+.dot:nth-child(3) {
+  animation-delay: 0.2s;
+}
+
+.dot:nth-child(4) {
+  animation-delay: 0.3s;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+      transform: translateX(0);
+  }
+
+  40% {
+      transform: translateX(15px);
+  }
+
+  60% {
+      transform: translateX(15px);
+  }
+}
+
+</style>
   </head>
   <body>
+   
+    <script>
+      // JavaScript to control the display of loading and content
+      document.addEventListener("DOMContentLoaded", function() {
+        var loadingContainer = document.getElementById("loadingContainer");
+        var contentContainer = document.getElementById("ftco-navbar");
+    
+        // Simulating a delay (you can replace this with your actual content loading logic)
+        setTimeout(function() {
+          loadingContainer.style.display = "none";
+          contentContainer.style.display = "block";
+        }, 2000); // Adjust the delay as needed
+      });
+    </script>
   	<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
 	    <div class="container">
-	      <a class="navbar-brand" href="index.html">Coffee<small>Blend</small></a>
+	      <a class="navbar-brand" href="{{url('/')}}">Coffee<small>Blend</small></a>
 	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
 	        <span class="oi oi-menu"></span> Menu
 	      </button>
 	      <div class="collapse navbar-collapse" id="ftco-nav">
-	        <ul class="navbar-nav ml-auto">
-	          <li class="nav-item active"><a href="index.html" class="nav-link">Home</a></li>
-	          <li class="nav-item"><a href="menu.html" class="nav-link">Menu</a></li>
-	          <li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>
-	          <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
-	         
-	          <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
-	          <li class="nav-item cart"><a href="cart.html" class="nav-link"><span class="icon icon-shopping_cart"></span></a>
-			  <li class="nav-item"><a href="{{url('/login')}}" class="nav-link">login</a></li>
-			  <li class="nav-item"><a href="register.html" class="nav-link">register</a></li>
-
-	        </ul>
+			<ul class="navbar-nav ml-auto">
+				<li class="nav-item active"><a href="{{url('/')}}" class="nav-link">Home</a></li>
+				<li class="nav-item"><a href="{{url('menu')}}" class="nav-link">Menu</a></li>
+				<li class="nav-item"><a href="{{url('service')}}" class="nav-link">Services</a></li>
+				<li class="nav-item"><a href="{{url('about')}}" class="nav-link">About</a></li>
+			   
+				<li class="nav-item"><a href="{{url('contact')}}" class="nav-link">Contact</a></li>
+				<li class="nav-item cart"><a href="{{url('cart')}}" class="nav-link"><span class="icon icon-shopping_cart"></span></a>
+				<li class="nav-item"><a href="{{url('login')}}" class="nav-link">login</a></li>
+				<li class="nav-item"><a href="{{url('register')}}" class="nav-link">register</a></li>
+  
+			  </ul>
 	      </div>
-		</div>
+		  </div>
 	  </nav>
-    <!-- END nav -->
-
+	  
     <section class="home-slider owl-carousel">
-      <div class="slider-item" style="background-image: url('{{ asset('images/bg_1.jpg') }}'); ">
+      <div class="slider-item" style="background-image: url(images/bg_1.jpg);">
       	<div class="overlay"></div>
         <div class="container">
           <div class="row slider-text justify-content-center align-items-center" data-scrollax-parent="true">
@@ -574,8 +663,6 @@
     </footer>
     
   
-
- 
 
 
   <script src="js/jquery.min.js"></script>
